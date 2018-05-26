@@ -6,6 +6,19 @@ const keys = require('../config/keys');
 
 const User = mongoose.model('users'); // fetch
 
+
+passport.serializeUser((user, done) => {
+    done(null, user.id); // id is the id assinged to the object by mongo not the google id
+})
+
+passport.deserializeUser((id, done) => {
+    User.findById(id)
+        .then(user => {
+            done(null, user);
+        })
+})
+
+
 // iternal identifier of the particular strategy is 'google'
 passport.use( new GoogleStrategy({
     clientID: keys.googleClientID,
@@ -24,5 +37,5 @@ passport.use( new GoogleStrategy({
                     }
                 });
 
-})
+    })
 );

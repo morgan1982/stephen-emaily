@@ -14,5 +14,14 @@ module.exports = app => {
     // redirects from google with the key
     app.get('/auth/google/callback', passport.authenticate('google'));
 
+    app.get('/api/logout', (req, res) => {
+        req.logout(); // attached to the object by passport. kills the cookie
+        res.send(req.user);
+    })
+
+    app.get('/api/current_user', (req, res) => {
+        res.send(req.user)
+    })
+
 }
 
