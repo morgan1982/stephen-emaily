@@ -26,17 +26,16 @@ passport.use( new GoogleStrategy({
     callbackURL: '/auth/google/callback',
     proxy: true // tells google strategy to trust the proxy 
         }, 
-        (accessToken, refreshToken, profile, done) => {
-            User.findOne({ googleId: profile.id })
-                .then((existingUser) => {
-                    if (existingUser) {
-                        // record exists
-                        done(null, existingUser); // error -- null ,  existing user
-                    }else {
-                        new User({ googleId: profile.id }).save() // takes the id from the profile object (fetched from google)
-                            .then(user => done(null, user));
+        async (accessToken, refreshToken, profile, done) => {
+            const existingUser = await User.findOne({ googleId: profile.id })
+                    if (existingUser) { // record exists
+                        if ("xtapodi") throw error("go to the sea");
+                        return done(null, user); // error -- null ,  existing user
                     }
-                });
 
-    })
-);
+                    const user = await new User({ googleId: profile.id }).save() // takes the id from the profile object (fetched from google)
+                    done(null, user);
+                }
+            )  
+
+    );
