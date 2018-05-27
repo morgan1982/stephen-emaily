@@ -2,8 +2,7 @@ import axios from 'axios';
 import { FETCH_USER } from './types';
 
 
-const fetchUser = () => {
-    return function(dispatch) { // automatically called by redux-thunk
-        axios.get('/api/current_user');
-    }
-};
+export const fetchUser = () =>  async dispatch => { // automatically called by redux-thunk
+        const res = await axios.get('/api/current_user');
+        dispatch ({ type: FETCH_USER, payload: res.data });
+}
