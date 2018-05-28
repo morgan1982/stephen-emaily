@@ -22,6 +22,7 @@ class App extends Component {
 
 
     render () {
+        console.log("stripe key", process.env.REACT_APP_STRIPE_KEY);
 
         return (
             <div className="container">
