@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+
 const logger = null;
 
 class Header extends Component {
@@ -31,7 +32,10 @@ class Header extends Component {
         return (
             <nav>
                 <div className="nav-wrapper">
-                    <a className="left brand-log">Emaily</a>
+                    <Link 
+                        to={this.props.auth ? '/surveys' : '/'} 
+                        className="left brand-log"
+                        >Emaily</Link>
                     <ul className="right">
                         {this.renderContent()}
                     </ul>
