@@ -8,20 +8,26 @@ class Header extends Component {
 
 
     renderContent() {
-        console.log("inside header", this.props.auth);
         switch (this.props.auth) {
             case null:
                 return "waiting..";
             case false:
-                return 'i am logged out'
+                return (
+                    <li>
+                        <a href="/auth/google">Login With Google</a>
+                    </li>
+                    )
             default:
-                return 'im logged in'
+                return (
+                    <li>
+                        <a href="/api/logout">Logout</a>
+                    </li>
+                    )
         }
     }
 
     render() {
 
-        console.log(this.props);
         return (
             <nav>
                 <div className="nav-wrapper">

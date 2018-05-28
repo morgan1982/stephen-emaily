@@ -11,3 +11,7 @@ export default function(state = null, action) {
             return state;
     }
 }
+
+/*
+The logical OR operator isn't commutative like +, *, etc. It returns the first expression which can be converted into true
+*/
