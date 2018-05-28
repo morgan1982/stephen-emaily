@@ -1,16 +1,33 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
+const logger = null;
 
 class Header extends Component {
 
+
+    renderContent() {
+        console.log("inside header", this.props.auth);
+        switch (this.props.auth) {
+            case null:
+                return "waiting..";
+            case false:
+                return 'i am logged out'
+            default:
+                return 'im logged in'
+        }
+    }
+
     render() {
+
+        console.log(this.props);
         return (
             <nav>
                 <div className="nav-wrapper">
                     <a className="left brand-log">Emaily</a>
                     <ul className="right">
-                        <li><a>Login With Google</a></li>
+                        {this.renderContent()}
                     </ul>
                 </div>
             </nav>
@@ -21,6 +38,10 @@ class Header extends Component {
 
 }
 
+function mapStateToProps({ auth }) {
+    return { auth };
+}
 
 
-export default Header;
+
+export default connect(mapStateToProps)(Header);
