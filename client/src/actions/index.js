@@ -9,7 +9,6 @@ export const fetchUser = () =>  async dispatch => { // automatically called by r
 
 // for the payment
 export const handleToken = token => async dispatch => {
-        console.log("payment action")
         const res = await axios.post('/api/stripe', token);
         dispatch ({ type: FETCH_USER, payload: res.data })
 }
