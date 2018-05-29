@@ -9,6 +9,9 @@ export const fetchUser = () =>  async dispatch => { // automatically called by r
 
 // for the payment
 export const handleToken = token => async dispatch => {
-    const res = await axios.post('/api/stripe', token);
+        console.log("payment action")
+        const res = await axios.post('/api/stripe', token);
         dispatch ({ type: FETCH_USER, payload: res.data })
 }
+// both actions send the user model to the reducers thats why the FETCH_USER action.type is used again.
+

@@ -9,6 +9,7 @@ class Payments extends Component {
 
     render () {
 
+
         return (
             <StripeCheckout
                 amount={500}

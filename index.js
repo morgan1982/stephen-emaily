@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
+const bodyparser = require('body-parser');
 const passport = require('passport');
 const keys = require('./config/keys');
 require('./models/User');
@@ -15,6 +16,10 @@ mongoose.connect(keys.mongoUri, (err) => {
 
 const app = express(); // creates a new application
 
+// MIDDLEWARES
+
+app.use(bodyparser.json());
+
 // enable cookies
 app.use(
     cookieSession({
@@ -27,6 +32,7 @@ app.use(passport.session());
 
 // return a function that expects an arg
 require('./routes/authRoutes')(app);
+require('./routes/billingRoutes')(app);
 
 
 
