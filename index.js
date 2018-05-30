@@ -4,7 +4,9 @@ const cookieSession = require('cookie-session');
 const bodyparser = require('body-parser');
 const passport = require('passport');
 const keys = require('./config/keys');
+
 require('./models/User');
+require('./models/Survey');
 require('./services/passport');
 
 
@@ -30,9 +32,11 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+// ROUTES
 // return a function that expects an arg
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
+require('./routes/surveyRoutes')(app);
 
 
 if (process.env.NODE_ENV === 'production') {

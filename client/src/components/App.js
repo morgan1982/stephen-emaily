@@ -16,13 +16,11 @@ class App extends Component {
 
 
     componentDidMount() {
-        // console.log(this.props)
         this.props.fetchUser();
     }
 
 
     render () {
-        console.log("stripe key", process.env.REACT_APP_STRIPE_KEY);
 
         return (
             <div className="container">
