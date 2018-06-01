@@ -7,9 +7,9 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import reduxThunk from 'redux-thunk';
 import reducers from './reducers';
-
-// temp
 import axios from 'axios';
+
+console.log(process);
 window.axios = axios;
 
 
