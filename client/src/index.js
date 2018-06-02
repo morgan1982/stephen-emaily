@@ -9,6 +9,8 @@ import reduxThunk from 'redux-thunk';
 import reducers from './reducers';
 import axios from 'axios';
 
+import Styles from './styles.css';
+
 console.log(process);
 window.axios = axios;
 
