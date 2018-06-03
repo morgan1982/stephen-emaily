@@ -5,20 +5,14 @@ import { reduxForm, Field } from 'redux-form';
 
 import SurveyField from './SurveyField';
 import validateEmails from '../../utils/validateEmails';
-
-const FIELDS = [
-    { label: 'Survey Title', name: 'title', noValueError: 'Provide a title'},
-    { label: 'Subject Line', name: 'subject', noValueError: 'Provide a subject'},
-    { label: 'Email Body', name: 'body', noValueError: 'Provide a body'},
-    { label: 'Recipient List', name: 'emails', noValueError: 'Provide emails'},
-]
+import formFields from './formFields';
 
 
 class SurveyForm extends Component {
 
     renderFields() {
 
-        return _.map(FIELDS, ({ label, name, key }) => { // destructure the field (eatch object in the array)
+        return _.map(formFields, ({ label, name, key }) => { // destructure the field (eatch object in the array)
             return <Field component={SurveyField}
                           type="text"
                           label={label}
@@ -54,7 +48,7 @@ function validate(values) {
     errors.emails = validateEmails(values.emails || '');
 
 
-    _.each(FIELDS, ({ name, noValueError }) => {
+    _.each(formFields, ({ name, noValueError }) => {
         if (!values[name]) {
             errors[name] = noValueError
         }
