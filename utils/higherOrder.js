@@ -33,5 +33,37 @@ let moreThan10 = companies.filter(company => (
         company.end - company.start >= 10
     )).map(company => company.name);
 
+// sort companies by starting year
+const sortedByYear = companies.sort((a, b) => (!(a.start > b.start) ? 1 : -1));
+// reverse string
+let str = "this is a cat"
 
-console.log(moreThan10);
+// const reversed = function (str) {
+
+//     let reversedArr = [];
+//     counter = str.length;
+//     do {
+//         reversedArr.push(str[counter -1])
+//         counter--
+//     }while(counter > 0)
+//     const word = reversedArr.join("");
+//     return word;
+
+// }
+// const reversed = (str) => {
+//     let reversedStr = ""
+//     for (let i = str.length -1; i>=0; i --) {
+//         reversedStr += str[i];
+//     }
+//     return reversedStr;
+// }
+const reversed = (str) => {
+    return str
+        .split("")
+        .reverse()
+        .join("");
+}
+
+
+
+console.log(reversed(str));
